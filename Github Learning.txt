@@ -1,0 +1,141 @@
+Changing directory in Git Bash :
+Your windows file path : C:\Users\abusm\OneDrive\Desktop\Learning Git
+To be included in gitbash like this : /C/Users/abusm/OneDrive/Desktop/"Learning Git"
+Note : Folders names with space should be enclosed with double quotes.
+
+
+
+Git commands :
+
+1. Setup git in the system :
+    $ git config --global user.name "UserName"
+    $ git config --global user.mail "Usermailid"
+    $ git config --global core.editor "code --wait" //Before this command, enter the vscode and search for code
+and setup this.
+
+2. To check the config file :
+    $ cat .gitconfig
+
+3. Initialising git in a folder :
+    $ git init //This should be done after entering the folder you want to track.
+
+4. Staging the file to track :
+    //At first, every files in your folder are untracked by git.
+    //For a file to track, use add command.
+    //Note : You have to stage the file everytime you modify them.
+    $ git add folder_name
+    $ git add . //This will add every files in the current folder to the stage to be tracked by git.
+
+5. To see the status of your files in git :
+    //Note : You should use this everytime to check the status.
+    $ git status 
+
+6. To see the history of commits :
+    $ git log //This will show you the entire log.
+    $ git log --oneline //This will show the log in single line.
+
+7. To commit the changes :
+    $ git commit //This will work, but it will open the editor and ask you to enter the message for the current 
+                commit.
+    $ git commit -m "Good descriptive message should go here" //Efficient way for commit.
+
+8. To hide the files that you don't want to be tracked in a folder :
+    //To do this create a file named .gitignore
+    //Enter the file name or folder name to be ignored by git.
+
+9. To create a branch :
+    //Always master branch is the main branch and head always points to this branch (Head is represented by *).
+    //Creating a branch means working with alternate timeline.
+    //Someone may be working with different file to fix any bug in your code, and they can finally merge into
+      the main branch.
+    $ git branch branch_name
+    //You can work asusual in this branch, by adding, commiting and doing stuffs.
+    //After created the branch, to work in it , you have to switch to that branch.
+    //The head still points to the master branch *master.
+
+10. To check the branches present :
+    $ git branch //This will show you the branches in your project.
+
+11. To switch to another branch :
+    $ git checkout branch_name
+    $ git switch branch_name 
+    //Note : both checkout and switch are same.
+    $ git checkout -b branch_name //This will create a branch and at the same time, switches to that branch.
+    //The above is equivalent to : $ git branch branch_name + $ git checkout branch_name.
+    $ git switch -c branch_name //Same as the above command.
+
+
+12. To delete a branch : 
+    $ git branch -d branch_name
+
+13. To merge the file from another branch :
+    //After finishing everything in another branch, move to the master branch by $ git checkout master.
+    $ git merge branch_name
+
+14. Stashing the commits :
+    //This arises when you want to move to another branch without commiting your changes.
+    //You can't switch to another branch without commiting, if you modified anything.
+    //Stash basically moves the changes to like a temporary place, like they disappeared for a moment.
+    //After stashing you can move to another branches.
+    $ git stash
+    //You can get back the stashed changes by,
+    $ git stash pop
+    //Note : You can also pop this stash in another branch, now this changes are belong to the branch you pop
+    them.
+    //Example : If you stashed the changes in footer branch and moved to master branch. You can now pop the stash.
+    //Be careful with stash.
+
+15. Other useful commands :
+    //To move to a commit
+    $ git checkout <HASH> //This hash is found in the log of every commits.
+    //When you are stuck at someplace, like moved to some commit and don't know how to get back to the previous
+    place. Use the below commands,
+    $ git checkout master
+    $ git reflog
+    //Both can be used to move to previous working point.
+    $ git checkout HEAD~2 //It moves to 2 commits before.
+
+Started working with Github :
+
+16. To include the remote repository into git space :
+    $ git remote add origin "Your_Git_Repository_HTTPS"
+
+17. To check if any remote repository present :
+    $ git remote -v 
+
+18. To change the name of the master branch :
+    $ git branch -M main //The name of master branch is now changed to main.
+
+19. To push the local file to remote repository :
+    $ git push -u origin main //Normally, we have to use this command without -u everytime we want to push the
+    file. When we include -u, it sets the upstream to remote repository. Upstream means connection to remote 
+    repository. You have to run the above command only once, and you can use the below command hereafter.
+    $ git push //This will directly push to remote repository only when you have ran the above command once.
+    
+20. Cloning the remote repository :
+    $ git clone "url_of_the_remote_repository" //Here, you can download the files of any other repositories
+    into your own work.
+
+21. Git pull and fetch commands :
+    Consider this,
+    Work -------> Stage --------> Local Repo ---------> Remote Repo //This is your normal workflow of git.
+    git pull has ability to put the files of remote repo into your work.(It's limit)
+    git fetch has ability to put the files of remote repo into your local repo.(It's limit is smaller than pull)
+    git pull = git fetch + git merge
+    $ git pull origin main
+    $ git fetch 
+
+22. Working with others files and making Pull Requests :
+    To work with others files, you have to fork their repository into your account.
+    After doing this, download their files using git clone command.
+    Always work by creating your own branch and try to work in it only.
+    Don't work in main branch if you have forked someones'.
+    After finishing, push the files into their repo by, git push origin your_branch.
+    This will send them a pull requests, then the maintainers review your changes and it's upto them to 
+    accept your work and merge them into their main work or just reject it.
+
+
+
+            ----------------------------END OF GIT & GITHUB LEARNING--------------------------
+
+
